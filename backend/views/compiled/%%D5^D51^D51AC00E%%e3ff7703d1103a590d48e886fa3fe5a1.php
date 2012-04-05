@@ -1,2 +1,0 @@
-<?php /* Smarty version 2.6.25, created on 2012-04-05 02:03:00
-         compiled from fromstring:%3C%21DOCTYPE+html+PUBLIC+%22-//W3C//DTD+XHTML+1.0+Transitional//EN%22+%22http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd%22%3E%0D%0A%3Chtml+xmlns%3D%22http://www.w3.org/1999/xhtml%22+lang%3D%22en%22+xml:lang%3D%22en%22%3E+%0D%0A%3Chead%3E%0D%0A%09%3Cmeta+http-equiv%3D%22Content-Type%22+c
