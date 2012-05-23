@@ -2,13 +2,13 @@
 
 <div class="pad25">
 	
-	<div class="half left">
+	<div>
 		<div class="pad10">
 			<h5>Recent Users ({$userCount}) <a href="/admin/users/normalusers" class="more">all</a></h5>
 			<table width="100%" class="border table zebra">
 				<tr>
 					<th>Username</th>
-					<th width="35%">Date</th>
+					<th width="50%">Date</th>
 				</tr>
 				{foreach from=$latestUsers item=user}
 				<tr>
@@ -22,7 +22,7 @@
 		</div>
 	</div>
 	
-	<div class="half right">
+	<div class="half right" style="display: none;">
 		<!--<div class="pad10">
 			<h5>Popular Searches <a href="" class="more">all</a></h5>
 			<table width="100%" class="border table zebra">

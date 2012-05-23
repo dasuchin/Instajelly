@@ -1,0 +1,5 @@
+body { }
+
+#newcomers { margin: 0 auto; max-width: 1050px; }
+#newcomers li { display: block; float: left; }
+#newcomers li img { background: #FFF; height: 150px; width: 150px; }

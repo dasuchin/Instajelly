@@ -74,6 +74,29 @@ class UserModel extends Model {
 		return $this->db->getAll($sql);
 		
 	}
+
+	function getNumUsers($type='all') {
+	
+		$whereClause = "1=1";
+
+		if($type !='all') {
+			$whereClause .= " AND `type` = '".$this->db->makeSafe($type)."'";
+		}
+
+		$sql = "
+		SELECT
+			count(*)
+		FROM
+			`users`
+		WHERE
+			".$whereClause."
+		ORDER BY
+			`cDate`
+		";
+
+		return $this->db->getOne($sql);
+
+	}
 	
 	function getRecentLogins($withAdmins=false) {
 		

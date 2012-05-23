@@ -5,7 +5,7 @@
 class Controller {
   
 	public $view;
-  public $layout;
+	public $layout;
 	
 	function __construct() {
 		
@@ -69,6 +69,20 @@ class Controller {
 			header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
 			
 		}
+		
+	}
+	
+	// connect to pusher
+	function connectPusher() {
+		
+		$objSettings = Settings::getInstance();
+		$key = $objSettings->getEntry('pusher','key');
+		$secret = $objSettings->getEntry('pusher','secret');
+		$app_id = $objSettings->getEntry('pusher','app-id');
+		
+		$objPusher = new Pusher($key, $secret, $app_id);
+		
+		return $objPusher;
 		
 	}
 	

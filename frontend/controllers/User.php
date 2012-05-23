@@ -35,10 +35,11 @@ class User extends Controller {
 		}
 
 		if($response->access_token) {
+			
 			$objFriendlyurl = new FriendlyurlModel();
 			$objUser = new UserModel($response->user->username);
 			$userInfo = $objUser->getInfo();
-
+			
 			$saveData = array();
 			$saveData['access_token'] = $response->access_token;
 			$saveData['username'] = $response->user->username;
@@ -46,29 +47,80 @@ class User extends Controller {
 			$saveData['type'] = 'user';
 			$saveData['user_query'] = json_encode($objInstagram->getUserInfo($response->user->id, $response->access_token));
 			$saveData['id'] = $userInfo['id'];
-
+			
 			$internal_id = $objUser->saveUser($saveData);
-
+			
+			// If new user, send the Pusher message
+			if($internal_id != $saveData['id']) {
+			//if(1==1) { // always send the message, for testing!
+				
+				$instagramUserInfo = $objInstagram->getUserInfo($response->user->id, $response->access_token);
+				
+				$objPusher = $this->connectPusher();
+				
+				// channel to send message on
+				$channel = 'private-userEvents';
+				
+				// build the message
+				$message = array('user_id'=>$internal_id, 'username'=>$instagramUserInfo->data->username, 'picture'=>$instagramUserInfo->data->profile_picture);
+				
+				// fire off the message
+				$sent = $objPusher->trigger($channel, 'newUser', $message);
+				
+			}
+			
 			$objFriendlyurl->saveUrl('/'.$response->user->username, 'User', 'Profile', array('username'=>$response->user->username));
-
+			
 			setcookie('username', $response->user->username, time()+60*60*24*365*10);
-
+			
 			if(!empty($_COOKIE['lastaction'])) {
+				
 				$lastaction = $_COOKIE['lastaction'];
 				unset($_COOKIE['lastaction']);
 				setcookie('lastaction', null, -1);
 				header('Location: http://'.URL.'/'.$lastaction);
+				
 			} else {
+				
 				header('Location: http://'.URL.'/'.$response->user->username);
+				
 			}
+			
 			die();
+			
 		} else if($response->code == 400) {
+			
 			$objDispatcher = new Dispatcher();
 			$objDispatcher->setController('user');
 			$objDispatcher->setAction('register');
 			$objDispatcher->dispatch();
+			
 		} 
 		
+		
+	}
+	
+	// pusher auth action
+	function actionPusherAuth($params='') {
+		
+		$objPusher = $this->connectPusher();
+		
+		$channelName = !empty($params['channel_name'])?$params['channel_name']:false;
+		$socketId = !empty($params['socket_id'])?$params['socket_id']:false;
+		
+		if(substr($channelName,0,7) == 'private') {
+			
+			// Auth for private channel
+			echo $objPusher->socket_auth($channelName,$socketId);
+			
+		} else if(substr($channelName,0,8) == 'presence') {
+			
+			// Auth for presence channel
+			echo $objPusher->presence_auth($channelName,$socketId, $_COOKIE['username'] ,null);
+			
+		}
+		
+		exit(0);
 		
 	}
 	

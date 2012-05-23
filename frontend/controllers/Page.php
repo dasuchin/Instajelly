@@ -52,7 +52,6 @@ class Page extends Controller {
 			
 			//assign template vars
 			$this->view->assign('pageTitle',$pageInfo['title']);
-			$this->view->assign('content',$this->view->fetch('fromstring:'.$pageInfo['content']));
 			
 			if(!empty($sideBars)) {
 				
@@ -61,10 +60,12 @@ class Page extends Controller {
 				
 			}
 
-			if($page_id == 4) {
+			if($page_id == 9) {
+				
 				$objUser = new UserModel();
-				$recentUsers = $objUser->getRecentUsers('user', 20);
-
+				$recentUsers = $objUser->getRecentUsers('user', 49);
+				$numUsers = $objUser->getNumUsers('user');
+				
 				$recent = array();
 				$i = 0;
 				foreach($recentUsers as $user) {
@@ -79,7 +80,11 @@ class Page extends Controller {
 				}
 
 				$this->view->assign('recentUsers', $recent);
+				$this->view->assign('numUsers', $numUsers);
+
 			}
+			
+			$this->view->assign('content',$this->view->fetch('fromstring:'.$pageInfo['content']));
 			
 			$this->view->assign('layout',$this->view->fetch('fromstring:'.$layoutInfo['code']));
 			
