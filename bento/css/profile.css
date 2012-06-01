@@ -59,6 +59,12 @@ li#meta .likes.liked .icon { color: #FFF; }
 
 #profile .profile-image { border: .1em solid rgba(0,0,0,.2); height: 27px; width: 27px;
 	-webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; }
+#profile .follow, #profile .unfollow { background: rgba(76,131,159,.8); border: 1px solid #225578; color: #FFF; font-size: .75em;  padding: .4em 1em; position: relative; top: .17em;
+	-webkit-box-shadow: inset 0 1px 0 rgba(250,250,250,.3);
+	-webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; }
+#profile .unfollow { background: rgba(34,85,120,.8); color: #4c839f;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(250,250,250,.1); }
+
 .profile-name { color: #FFF; font-size: 1.3em; font-weight: 100; opacity: .9; padding: 0; margin: 0; text-shadow: 0 1px 0 rgba(0,0,0,.5); }
 .profile-name:hover { opacity: 1; }
 
@@ -70,6 +76,8 @@ li#meta .likes.liked .icon { color: #FFF; }
 .profile-bio { background: rgba(0,0,0,.1); color: #777; font-size: .8em; margin: -1.3em .5em 1em .4em; padding: 1em 1em .8em 1em;
 	-webkit-box-shadow: 0 1px 0 rgba(250,250,250,.3); -moz-box-shadow: 0 1px 0 rgba(250,250,250,.3); -ms-box-shadow: 0 1px 0 rgba(250,250,250,.3); -o-box-shadow: 0 1px 0 rgba(250,250,250,.3); box-shadow: 0 1px 0 rgba(250,250,250,.3);
 	-webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; }
+	
+
 	
 #photos .data { margin: 0; padding: 0; }
 #photos .data a { opacity: .7; }
