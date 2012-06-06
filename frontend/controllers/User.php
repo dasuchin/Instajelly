@@ -72,6 +72,7 @@ class User extends Controller {
 			$objFriendlyurl->saveUrl('/'.$response->user->username, 'User', 'Profile', array('username'=>$response->user->username));
 			
 			setcookie('username', $response->user->username, time()+60*60*24*365*10);
+			$_SESSION['username'] = $response->user->username;
 			
 			if(!empty($_COOKIE['lastaction'])) {
 				
@@ -159,6 +160,27 @@ class User extends Controller {
 		if(isset($media->pagination->next_url)) {
 			$this->view->assign('more', true);
 		}
+
+		if(isset($_COOKIE['username'])) {
+			$username = $_COOKIE['username'];
+		} else if(isset($_SESSION['username'])) {
+			$username = $_SESSION['username'];
+		}
+
+		/*if(!empty($username)) {
+			$user_id = $userModel->usernameUsed($username);
+			$userModel->setUserId($user_id);
+
+			$user = $userModel->getInfo();
+			
+			$relationship = $objInstagram->relationship($user['user_id'], $user['access_token']);
+			echo '<!--';
+			print_r($relationship);
+			echo '-->';
+			if($relationship->data->incoming_status == 'followed_by') {
+				$this->view->assign('following', true);
+			}
+		}*/
 		
 		$layoutInfo = $objLayout->loadLayout(3);
 		$template = $objTemplate->loadTemplateFromKeyname('user-profile');
@@ -194,6 +216,7 @@ class User extends Controller {
 	function actionComment($params = '') {
 		
 		$username = (isset($_COOKIE['username'])) ? $_COOKIE['username'] : '';
+		$_SESSION = $username;
 		
 		if(!empty($params['viewing'])) {
 			setcookie('lastaction', $params['viewing']);
@@ -225,6 +248,7 @@ class User extends Controller {
 	function actionLike($params = '') {
 
 		$username = (isset($_COOKIE['username'])) ? $_COOKIE['username'] : '';
+		$_SESSION = $username;
 
 		if(!empty($params['viewing'])) {
 			setcookie('lastaction', $params['viewing']);
@@ -244,6 +268,38 @@ class User extends Controller {
 			}
 
 			echo json_encode(array('like'=>'true'));
+
+		} else {
+			echo json_encode(array('nocookie'=>'true'));
+		}
+
+		die();
+
+	}
+
+	function actionFollow($params = '') {
+
+		$username = (isset($_COOKIE['username'])) ? $_COOKIE['username'] : '';
+		$_SESSION = $username;
+
+		if(!empty($params['viewing'])) {
+			setcookie('lastaction', $params['viewing']);
+		}
+
+		if(!empty($username)) {
+
+			$objUser = new UserModel($username);
+			$userInfo = $objUser->getInfo();
+
+			$objInstagram = new InstagramModel();
+			$follow = $objInstagram->follow($params['user_id'], $params['action'], $userInfo['access_token']);
+
+			if($follow->meta->code != 200) {
+				echo json_encode(array('nocookie'=>'true'));
+				die();
+			}
+
+			echo json_encode(array('follow'=>'true'));
 
 		} else {
 			echo json_encode(array('nocookie'=>'true'));

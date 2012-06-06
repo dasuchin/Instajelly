@@ -57,6 +57,18 @@ class InstagramModel extends Model {
 		return $this->sendRequest('/media/'.$media_id.'/likes/?access_token='.$access_token, array('like'=>'like'));
 
 	}
+
+	function follow($user_id, $action, $access_token) {
+
+		return $this->sendRequest('/users/'.$user_id.'/relationship/?access_token='.$access_token, array('action'=>$action));
+
+	}
+
+	function relationship($user_id, $access_token) {
+
+		return $this->sendRequest('/users/'.$user_id.'/relationship/?access_token='.$access_token);
+
+	}
 	
 	private function sendRequest($url, $post = array()) {
 		

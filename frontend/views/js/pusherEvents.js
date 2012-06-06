@@ -67,6 +67,7 @@ function pusherAddUser(data) {
     var numbUsers = $('#numbUsers');
     var currentCount = parseInt(numbUsers.html(),10);
     numbUsers.html(currentCount+1);
+    document.title = 'bam!';
     
     return true;
     

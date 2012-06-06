@@ -207,6 +207,40 @@ function like(media_id) {
 
 }
 
+function follow(user_id) {
+
+
+	var posturl = '/user/follow';
+	var viewing = $('ul#profile .profile-name').text();
+	var action = '';
+
+	if($('a[href*="follow"]').hasClass('follow')) {
+		action = 'follow';
+	} else {
+		action = 'unfollow';
+	}
+	console.log(action);
+	$.post(posturl, {user_id: user_id, viewing: viewing, action: action},
+		function(data) {
+			
+			var obj = jQuery.parseJSON(data);
+
+			if(obj.follow) {
+				if(action == 'follow') {
+					$('a[href*="follow"]').removeClass('follow').addClass('unfollow').html('Following');
+				} else {
+					$('a[href*="follow"]').removeClass('unfollow').addClass('follow').html('Follow');
+				}
+			} else {
+				window.location = httpUrl+'user/register';
+			}
+
+		}
+	);
+
+
+}
+
 /*$(window).scroll(function(){
 	var username = $('#profile-name').text()
 	if($('#moarrr').is(':visible')) {
