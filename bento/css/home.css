@@ -2,7 +2,7 @@ body { background: #FFF; font-family: museo; font-weight: 200; padding: 0; }
 
 /* button */
 
-.btn { color: #FFF; display: inline-block; font-size: 1.4em; font-weight: 400; padding: 1em 2em; position: relative; 
+.btn { color: #FFF; display: inline-block; font-size: 1.3em; font-weight: 400; padding: 1em 2em; position: relative; 
 	-webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; border-radius: 10px; }
 .btn.green { background-color: #5ebb91; }
 .btn.green:hover { background-color: #45a674; }

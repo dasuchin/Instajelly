@@ -29,7 +29,7 @@ class Users extends Controller {
 	function actionNormalUsers($params='') {
 		
 		$objUsers = new UserModel;
-		$users = $objUsers->getRecentUsers('user', 200);
+		$users = $objUsers->getRecentUsers('user', 500);
 		
 		$this->view->assign('userList',$users);
 		$this->view->assign('userType','Normal');

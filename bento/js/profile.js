@@ -81,7 +81,7 @@ function enlargePhoto() {
 				}
 			}
 	  	}
-	  	else if(e.keyCode == 39 || photo.click) { // right
+	  	else if(e.keyCode == 39) { // right
 	  		if($('#photos li').hasClass('active')) { 
 		    	if($('.active').is(':last-child')) {
 		    		eval($('#moarrr').attr('href'))

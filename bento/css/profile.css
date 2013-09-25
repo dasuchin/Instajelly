@@ -1,4 +1,4 @@
-body { background: #eee3d3 url(../img/bg-dot.png); font-family: museo, helvetica, arial, serif; font-size: 1em; max-width: 100%; overflow-x: hidden; padding: 3.7em 0 1em 0; }
+body { background: #fbf7ea url(../img/bg-dot.png); font-family: museo, helvetica, arial, serif; font-size: 1em; max-width: 100%; overflow-x: hidden; padding: 3.7em 0 1em 0; }
 
 @font-face {
     font-family: 'EntypoRegular';
@@ -14,6 +14,9 @@ body { background: #eee3d3 url(../img/bg-dot.png); font-family: museo, helvetica
 a { text-decoration: none; }
 .icon { font-family: 'EntypoRegular'; font-size: 2.5em; font-weight: normal; }
 
+#arrows { background: #ffeaea; border-bottom: 1px solid #FFF; color: #555; display: none; font-size: 12px; padding: 5px 0; position: fixed; top: 0em; left: 0; text-align: center; width: 100%; z-index: 60; }
+#arrows a { color: #d74542; }
+
 /* create button */
 .btn { color: #FFF; display: block; font-family: museo; font-size: 1.2em; font-weight: 400; padding: .8em 1.8em; position: relative; text-shadow: 0 -1px 0 rgba(0,0,0,.3);
 	-webkit-box-shadow: inset 0 1px 0 rgba(250,250,250,.5);
@@ -24,8 +27,7 @@ a { text-decoration: none; }
 	-webkit-box-shadow: 0 5px 0 #2d8454; -moz-box-shadow: 0 5px 0 #2d8454; -ms-box-shadow: 0 5px 0 #2d8454; -o-box-shadow: 0 5px 0 #2d8454; box-shadow: 0 5px 0 #2d8454; }
 .btn.green:hover { top: -.11em;
 	-webkit-box-shadow: 0 7px 0 #2d8454; -moz-box-shadow: 0 7px 0 #2d8454; -ms-box-shadow: 0 7px 0 #2d8454; -o-box-shadow: 0 7px 0 #2d8454; box-shadow: 0 7px 0 #2d8454; }
-.btn.green:active { top: .2em;
-	-webkit-box-shadow: 0 3px 0 #2d8454; -moz-box-shadow: 0 3px 0 #2d8454; -ms-box-shadow: 0 3px 0 #2d8454; -o-box-shadow: 0 3px 0 #2d8454; box-shadow: 0 3px 0 #2d8454; }
+
 
 /* like and comment buttons */
 .button { background: #3F2F1C; color: #FFF; font-family:  museo-sans; font-size: .8em; font-weight: 600; margin: .5em 0; padding: .4em .8em .3em .8em;
@@ -42,7 +44,7 @@ li#meta .likes.liked .icon { color: #FFF; }
 /* branding */
 	
 /* social */
-#social { position: absolute; top: 1.2em; right: 1em; z-index: 100; }
+#social { position: absolute; top: .7em; right: 1em; z-index: 100; }
 #social a { color: #FFF; font-size: .8em; margin-left: 1em; opacity: .75; }
 #social a:hover { opacity: 1; }
 
@@ -113,7 +115,7 @@ li#meta .icon { line-height: .7em; }
 li#meta #close { cursor: pointer; font-size: 2.5em; opacity: .5; position: absolute; top: -.1em; right: .2em; z-index: 100; }
 li#meta #close:hover { opacity: 1; }
 
-li#meta #meta-head { margin: 0; padding: 1em; position: relative;
+li#meta #meta-head { margin: 0; padding: 1em; position: relative; top: -0.04em;
 	-webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; border-radius: 0; }
 li#meta .profile-name { font-size: 1.4em; }
 li#meta .profile-name:hover { color: #000; }

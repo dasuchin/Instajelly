@@ -1,5 +1,9 @@
-body { }
+body { color: #FFF; font-family: Helvetica Neue, Helvetica, arial, serif; text-align: center; }
 
-#newcomers { margin: 0 auto; max-width: 1050px; }
-#newcomers li { display: block; float: left; }
-#newcomers li img { background: #FFF; height: 150px; width: 150px; }
+#newcomers { margin: 0 auto; }
+#newcomers li { display: inline-block; overflow: hidden; }
+#newcomers li img { background: #FFF; display: inline-block; height: 100px; width: 100px; }
+#newcomers #title { background: #222; color: #FFF; display: block; font: 36px "Helvetica", Arial; margin-bottom: 5px; padding: 10px 20px; }
+#newcomers #numbUsers { font-size: 34px; font-weight: bold; }
+#newcomers li a { display: inline-block; position: relative; }
+#newcomers li a span { background: rgba(0,0,0,.5); color: #FFF; display: inline-block; font-size: 12px; font-weight: 100; overflow: hidden; padding: 2px; position: absolute; bottom: 0; text-overflow: ellipsis; z-index: 1; max-width: 100px; }

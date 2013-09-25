@@ -63,7 +63,7 @@ class Page extends Controller {
 			if($page_id == 9) {
 				
 				$objUser = new UserModel();
-				$recentUsers = $objUser->getRecentUsers('user', 49);
+				$recentUsers = $objUser->getRecentUsers('user', 251);
 				$numUsers = $objUser->getNumUsers('user');
 				
 				$recent = array();
