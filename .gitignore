@@ -2,3 +2,4 @@
 backend/views/compiled/
 frontend/views/compiled/
 config/database.php
+*.sql
